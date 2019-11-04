@@ -17,38 +17,42 @@ public class GunController : MonoBehaviour{
     private bool doOnce;
     void Update(){
         if (Input.GetButtonDown("Fire1")){
-            doOnce = true;
-            RaycastHit hit;
-            var ray = cam.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2,0));
+            SetObjectInArray(0);
+            //doOnce = true;
+            //RaycastHit hit;
+            //var ray = cam.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2,0));
 
-            if (Physics.Raycast(ray, out hit)){
-                if (!shootPoints[0]){
-                    shootPoints[0] = Instantiate(hitObj);
-                }
+            //if (Physics.Raycast(ray, out hit)){
+            //    if (!shootPoints[0]){
+            //        shootPoints[0] = Instantiate(hitObj);
+            //    }
 
-                shootPoints[0].name = "A";
-                shootPoints[0].transform.position = hit.point;
-                shotObjects[0] = hit.transform.gameObject;
-            }
+            //    shootPoints[0].name = "A";
+            //    shootPoints[0].transform.position = hit.point;
+            //    shotObjects[0] = hit.transform.gameObject;
+            //}
         }
 
         if (Input.GetButtonDown("Fire2")){
-            doOnce = true;
-            RaycastHit hit;
-            var ray = cam.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2,0));
+            SetObjectInArray(1);
+            //doOnce = true;
+            //RaycastHit hit;
+            //var ray = cam.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2,0));
 
-            if (Physics.Raycast(ray, out hit)){
+            //if (Physics.Raycast(ray, out hit)){
 
-                if (Physics.Raycast(ray, out hit)){
-                    if (!shootPoints[1]){
-                        shootPoints[1] = Instantiate(hitObj);
-                    }
+            //    if (Physics.Raycast(ray, out hit)){
+            //        if (hit.collider.gameObject.layer == 10) {
+            //            if (!shootPoints[1]){
+            //                shootPoints[1] = Instantiate(hitObj);
+            //            }
 
-                    shootPoints[1].name = "B";
-                    shootPoints[1].transform.position = hit.point;
-                    shotObjects[1] = hit.transform.gameObject;
-                }
-            }
+            //            shootPoints[1].name = "B";
+            //            shootPoints[1].transform.position = hit.point;
+            //            shotObjects[1] = hit.transform.gameObject;
+            //        }
+            //    }
+            //}
         }
 
         if (shotObjects[0] != shotObjects[1]){
@@ -65,6 +69,27 @@ public class GunController : MonoBehaviour{
                 
                 Destroy(shootPoints[0]);
                 Destroy(shootPoints[1]);
+            }
+        }
+    }
+
+    void SetObjectInArray(int choice){
+        doOnce = true;
+        RaycastHit hit;
+        var ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+
+        if (Physics.Raycast(ray, out hit)) {
+
+            if (Physics.Raycast(ray, out hit)) {
+                if (hit.collider.gameObject.layer == 10) {
+                    if (!shootPoints[choice]) {
+                        shootPoints[choice] = Instantiate(hitObj);
+                    }
+
+                    shootPoints[choice].name = "B";
+                    shootPoints[choice].transform.position = hit.point;
+                    shotObjects[choice] = hit.transform.gameObject;
+                }
             }
         }
     }
