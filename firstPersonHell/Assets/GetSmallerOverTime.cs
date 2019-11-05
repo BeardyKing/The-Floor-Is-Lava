@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GetSmallerOverTime : MonoBehaviour
 {
-    // Start is called before the first frame update
+   [SerializeField] Material Flesh;
+    [SerializeField] Renderer rend;
     void Start()
     {
         
@@ -15,6 +16,14 @@ public class GetSmallerOverTime : MonoBehaviour
         if (getSmaller) {
             transform.localScale = new Vector3(1.5f, transform.localScale.y - (Time.deltaTime / 7), 1.5f);
         }
+
+        if(transform.localScale.y < 1f)
+        {
+
+            rend.material = Flesh;
+        }
+
+
         if (transform.localScale.y < .05f) {
             Destroy(gameObject);
         }

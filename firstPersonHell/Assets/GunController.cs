@@ -96,4 +96,26 @@ public class GunController : MonoBehaviour{
             }
         }
     }
+
+
+    public Transform nextTarget()
+    {
+        RaycastHit hit;
+        var ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+
+        if (Physics.Raycast(ray, out hit))
+        {
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.gameObject.layer == 10)
+                {
+                    return hit.collider.transform;
+                }
+            }
+        }
+
+        return null;
+     
+    }
 }

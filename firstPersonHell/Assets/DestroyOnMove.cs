@@ -29,7 +29,7 @@ public class DestroyOnMove : MonoBehaviour
 
         }
 
-        if(timer > 15f)
+        if(timer > 1.5f)
         {
             wallFall();
         }
@@ -45,6 +45,7 @@ public class DestroyOnMove : MonoBehaviour
         if (ceiling)
         {
             Destroy(ceiling);
+            Destroy(floor);
         }
     }
 }
