@@ -8,7 +8,7 @@ public class GunController : MonoBehaviour{
     private Camera cam;
     private List<GameObject> hitList = new List<GameObject>();
     private GameObject[] shootPoints = new GameObject[2];
-    private GameObject[] shotObjects = new GameObject[2];
+    public GameObject[] shotObjects = new GameObject[2];
     
     void Start(){
         cam = FindObjectOfType<Camera>();
@@ -74,6 +74,9 @@ public class GunController : MonoBehaviour{
     }
 
     void SetObjectInArray(int choice){
+
+
+
         doOnce = true;
         RaycastHit hit;
         var ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
