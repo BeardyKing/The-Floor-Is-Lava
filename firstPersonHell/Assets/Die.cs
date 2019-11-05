@@ -8,11 +8,11 @@ public class Die : MonoBehaviour
 
     private readonly string Player = "Player";
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        print(collision.gameObject.tag);
+        print(other.gameObject.tag);
 
-        if(collision.gameObject.tag==Player)
+        if(other.gameObject.tag==Player)
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

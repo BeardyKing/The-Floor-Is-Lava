@@ -30,7 +30,7 @@ public class GetSmallerOverTime : MonoBehaviour
     }
     bool getSmaller;
 
-    private void OnCollisionEnter(Collision other){
+    private void OnTriggerEnter(Collider other){
         if (other.gameObject.layer == 11) {
             getSmaller = true;
         }
